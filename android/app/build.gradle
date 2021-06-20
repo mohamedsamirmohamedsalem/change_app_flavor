@@ -1,3 +1,5 @@
+import androidx.annotation.Dimension
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -52,6 +54,25 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    flavorDimensions "app"
+    productFlavors{
+        dev {
+            Dimension "app"
+            resValue "string","app_name","flavor_dev"
+            minSdkVersion 20
+        }
+        staging{
+            Dimension "app"
+            resValue "string","app_name","flavor_staging"
+        }
+        prod{
+            Dimension "app"
+            resValue "string","app_name","flavor_prod"
+        }
+    }
+
+
+
 }
 
 flutter {
